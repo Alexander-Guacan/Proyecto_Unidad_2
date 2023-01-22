@@ -1,11 +1,11 @@
-from Movie import Movie
-from Client import Client
+from MovieTextFileManager import MovieTextFileManager, Movie
+from ClientTextFileManager import ClientTextFileManager, Client
 
 class Shop:
 
     def __init__(self) -> None:
-        self.movies = list[Movie]()
-        self.clients = list[Client]()
+        self.movies = MovieTextFileManager.read()
+        self.clients = ClientTextFileManager.read()
 
     def exist(self, movie: Movie) -> bool:
         return movie.id > 0 and movie.id <= len(self.movies)
@@ -20,6 +20,8 @@ class Shop:
         self.movies.append(movie)
         movie.id = len(self.movies)
 
+        MovieTextFileManager.save(movie)
+
         return True
 
     def add_movie(self, movie: Movie) -> bool:
@@ -27,6 +29,9 @@ class Shop:
             return False
         
         self.movies[movie.id - 1].amount += movie.amount
+
+        MovieTextFileManager.update(self.movies)
+
         return True
 
     def sell_movie(self, movie: Movie) -> bool:
@@ -34,6 +39,9 @@ class Shop:
             return False
         
         self.movies[movie.id - 1].amount -= 1
+
+        MovieTextFileManager.update(self.movies)
+
         return True
 
     def rent_movie(self, movie: Movie, client: Client) -> bool:
@@ -46,11 +54,16 @@ class Shop:
             is_new_movie = self.clients[self.clients.index(client)].rent_movie(movie.id)
             if not is_new_movie:
                 return False
+            else:
+                ClientTextFileManager.update(self.clients)
         else:
             client.rent_movie(movie.id)
             self.clients.append(client)
+            ClientTextFileManager.save(client)
 
         self.sell_movie(movie)
+        MovieTextFileManager.update(self.movies)
+
         return True
     
     def return_movie(self, movie: Movie, client: Client) -> bool:
@@ -62,7 +75,10 @@ class Shop:
         if not is_successful_pay:
             return False
         
-        self.movies[self.movies.index(movie)].amount += 1
+        self.movies[movie.id - 1].amount += 1
+
+        MovieTextFileManager.update(self.movies)
+        ClientTextFileManager.update(self.clients)
 
         return True
 

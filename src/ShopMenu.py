@@ -12,7 +12,7 @@ class ShopMenu:
         pass
 
     def __select_category(self) -> str:
-        is_valid_category = True
+        is_valid_category = False
         category = int()
         while not is_valid_category:
             console.system("cls")
@@ -64,10 +64,10 @@ class ShopMenu:
         movie = self.__create_movie()
 
         if self.__shop.exist(movie):
-            print("Pelicula ya existe en la tienda")
-        else:
-            self.__shop.register_movie(movie)
-            print("Pelicula registrada correctamente")
+            return print("Pelicula ya existe en la tienda")
+        
+        self.__shop.register_movie(movie)
+        print("Pelicula registrada correctamente")
 
     def __add_movie(self) -> None:
         movie = Movie()
@@ -151,6 +151,8 @@ class ShopMenu:
         
         if self.__shop.rent_movie(movie, client):
             print(f"Transaccion exitosa, se le cobra {self.__shop.movies[movie.id - 1].rental_price}")
+        else:
+            print("Transaccion fallida: ya ha rentado la pelicula especificada")
 
     def __return_rent_movie(self) -> None:
         movie = Movie()
@@ -170,9 +172,9 @@ class ShopMenu:
                 return None
         
         if self.__shop.return_movie(movie, client):
-            print(f"Transaccion exitosa")
+            print("Transaccion exitosa")
         else:
-            print("Transaccion fallida")
+            print("Transaccion fallida: [La pelicula no ha sido rentada por el cliente o el cliente no se encuentra en la base de datos]")
 
     def print(self) -> None:
         while True:
@@ -185,7 +187,7 @@ class ShopMenu:
                 "4.- Buscar pelicula\n",
                 "5.- Vender pelicula\n",
                 "6.- Rentar pelicula\n",
-                "7.- Pagar pelicula\n",
+                "7.- Devolver pelicula\n",
                 "8.- Salir\n",
                 sep=''
             )
