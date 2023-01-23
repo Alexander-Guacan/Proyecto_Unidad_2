@@ -9,7 +9,7 @@ class Shop:
         self.clients = ClientTextFileManager.read()
 
     def exist(self, movie: Movie) -> bool:
-        return movie.id > 0 and movie.id <= len(self.movies)
+        return movie in self.movies or movie.id >= 1 and movie.id <= len(self.movies)
     
     def has_stock(self, movie: Movie) -> bool:
         return self.movies[movie.id - 1].amount >= 1

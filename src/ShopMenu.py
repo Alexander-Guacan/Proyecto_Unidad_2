@@ -98,7 +98,7 @@ class ShopMenu:
         matching = str()
 
         match filter:
-            case "category":
+            case "Categoria":
                 matching = self.__select_category()
             
             case "Ninguno":
@@ -174,7 +174,7 @@ class ShopMenu:
             console.system("cls")
 
             print(
-                "[ TIENDA DE PELICULAS ]",
+                "[ TIENDA DE PELICULAS ]\n",
                 "1.- Registrar pelicula\n",
                 "2.- Agregar pelicula\n",
                 "3.- Lista de peliculas\n",

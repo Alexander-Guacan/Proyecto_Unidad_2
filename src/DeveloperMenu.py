@@ -100,9 +100,7 @@ class DeveloperMenu:
 
     @profile
     def print_movie_information(self) -> None:
-        movie = Movie()
-        movie.id = random.randint(1, self.__movies_amount())
-        movie_sample = lambda _: movie
+        movie_sample = lambda _: random.randint(1, self.__movies_amount())
         best, others = big_o.big_o(self.__shop.search, movie_sample)
         print(f"[FUNCION BUSQUEDA DE INFORMACION DE PELICULA] Time complexity: {best}")
 
@@ -124,8 +122,8 @@ class DeveloperMenu:
             console.system("cls")
 
             print(
-                "[ MODO DESARROLLADOR ]",
-                "1.- Funcion filtrar lista por (director, nombre, genero)\n",
+                "[ MODO DESARROLLADOR ]\n",
+                "1.- Funcion filtrar lista por (director, nombre o genero)\n",
                 "2.- Funcion guardar informacion en txt\n",
                 "3.- Funcion ingresar informacion de pelicula\n",
                 "4.- Funcion comprar pelicula\n",

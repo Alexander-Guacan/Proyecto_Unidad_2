@@ -12,7 +12,11 @@ class MovieTextFileManager:
     @classmethod
     def read(cls) -> list[Movie]:
         movies = list[Movie]()
-        file = open(cls.__filename, "r")
+
+        try:
+            file = open(cls.__filename, "r")
+        except FileNotFoundError as exception:
+            return movies
 
         for line in file.readlines():
             movie = Movie()

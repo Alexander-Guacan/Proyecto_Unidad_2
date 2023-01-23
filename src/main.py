@@ -12,7 +12,7 @@ def main() -> None:
         console.system("cls")
 
         print(
-            "[ PLAY-MOVIE ]",
+            "[ PLAY-MOVIE ]\n",
             "1.- Administrador\n",
             "2.- Desarrollador\n",
             "3.- Salir\n",
@@ -31,13 +31,11 @@ def main() -> None:
             case '2':
                 developer_menu.print()
 
-            case '4':
+            case '3':
                 break
 
             case _:
                 continue
-
-        console.system('pause > nul')
 
 if __name__ == "__main__":
     main()

@@ -4,7 +4,7 @@ class Categories:
     
     @classmethod
     def is_valid(cls, option: int) -> bool:
-        return option > 0 and option < len(cls.__categories)
+        return option > 0 and option <= len(cls.__categories)
 
     @classmethod
     def print(cls) -> None:
