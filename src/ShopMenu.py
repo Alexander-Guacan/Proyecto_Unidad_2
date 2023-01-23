@@ -1,7 +1,7 @@
 import os as console
 from Input import Input
 from Categories import Categories
-from Shop import Shop, Movie, Client
+from Shop import Shop, Movie, Client, Filter
 from Verifier import Verifier
 from EcuadorianIdCard import EcuadorianIdCard
 from CreditCard import CreditCard
@@ -81,14 +81,7 @@ class ShopMenu:
             print("Cantidad de peliculas agregada correctamente")
 
     def __print_movies_list(self) -> None:
-        filter_map = {
-            "Ninguno"   : "",
-            "Titulo"    : "name",
-            "Director"  : "director",
-            "Categoria" : "category",
-        }
-
-        filters = list(filter_map.keys())
+        filters = Filter.filters()
         option = len(filters) + 1
 
         while option > len(filters):
@@ -100,7 +93,7 @@ class ShopMenu:
 
             option = Input.integer("Filtro: ", 1, 1, signed=False)
 
-        filter = filter_map[filters[option - 1]]
+        filter = filters[option - 1]
 
         matching = str()
 
@@ -108,14 +101,14 @@ class ShopMenu:
             case "category":
                 matching = self.__select_category()
             
-            case "":
+            case "Ninguno":
                 pass
                 
             case _:
                 matching = Input.alphanumeric(f"{filters[option - 1]}: ", 3, 30).lower()
 
         console.system("cls")
-        self.__shop.print_movies_list(filter, matching)
+        self.__shop.print_movies_list(Filter(filter, matching))
 
     def __search_movie(self) -> None:
         position = Input.integer("ID de pelicula: ", 1, 3, signed=False)
@@ -181,6 +174,7 @@ class ShopMenu:
             console.system("cls")
 
             print(
+                "[ TIENDA DE PELICULAS ]",
                 "1.- Registrar pelicula\n",
                 "2.- Agregar pelicula\n",
                 "3.- Lista de peliculas\n",

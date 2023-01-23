@@ -1,5 +1,6 @@
 from MovieTextFileManager import MovieTextFileManager, Movie
 from ClientTextFileManager import ClientTextFileManager, Client
+from Filter import Filter
 
 class Shop:
 
@@ -88,8 +89,7 @@ class Shop:
         
         return self.movies[id - 1]
 
-    def print_movies_list(self, attribute="", matching="") -> None:
-        has_enable_filter = len(attribute) > 0 and len(matching) > 0
+    def print_movies_list(self, filter: Filter) -> None:
 
         id_width, name_width, director_width, category_width, amount_width, purchase_price_width, rental_price_width, gap, columns, border =  3, 30, 20, 20, 8, 15, 18, ' '*3, 6, 2
         width_table = id_width + name_width + director_width + category_width + amount_width + purchase_price_width + rental_price_width + border + len(gap) * columns
@@ -102,7 +102,7 @@ class Shop:
         
         print(title)
         for movie in self.movies:
-            if has_enable_filter and not str(movie.__getattribute__(attribute)).startswith(matching):
+            if filter.has_select() and not str(movie.__getattribute__(filter.type)).startswith(filter.matching):
                 continue
 
             print(f"| {movie.id:^{id_width}d}{gap}{movie.name:<{name_width}s}{gap}{movie.director:<{director_width}}{gap}{movie.category:<{category_width}s}{gap}{movie.amount:^{amount_width}d}{gap}{movie.purchase_price:^{purchase_price_width}.2f}{gap}{movie.rental_price:^{rental_price_width}.2f} |\n"\

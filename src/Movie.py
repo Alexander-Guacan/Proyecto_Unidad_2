@@ -23,7 +23,7 @@ class Movie:
         return self
 
     def __eq__(self, movie: "Movie") -> bool:
-        return isinstance(movie, Movie) and self.id == movie.id and self.name == movie.name and self.director == movie.director
+        return isinstance(movie, Movie) and self.id == movie.id
     
     def __repr__(self) -> str:
         attributes_width = 8
