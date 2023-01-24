@@ -3,6 +3,21 @@ from DeveloperMenu import DeveloperMenu
 import os as console
 from Input import Input
 
+def help_mode() -> None:
+    """
+        Show help about of program mode
+    """
+    # Print help information
+    print(
+        """
+        [ AYUDA ]
+        Modo Administrador: Gestionamiento de la tienda de peliculas
+        Modo Desarrollador: Testing de algoritmos. Pruebas de complejidad espacial y temporal.
+        """
+    )
+    # Pause execution of program
+    console.system("pause > nul")
+
 def main() -> None:
     shop = Shop()
     shop_menu = ShopMenu(shop)
@@ -10,18 +25,16 @@ def main() -> None:
 
     while True:
         console.system("cls")
-
         print(
-            "[ PLAY-MOVIE ]\n",
+            "[ KRAMER ]\n",
             "1.- Administrador\n",
             "2.- Desarrollador\n",
-            "3.- Salir\n",
+            "3.- Ayuda\n"
+            "4.- Salir\n",
             sep=''
         )
 
         option = Input.numeric("Modo: ", 1, 1)
-
-        console.system("cls")
 
         match option:
 
@@ -32,6 +45,9 @@ def main() -> None:
                 developer_menu.print()
 
             case '3':
+                help_mode()
+
+            case '4':
                 break
 
             case _:

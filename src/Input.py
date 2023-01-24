@@ -121,7 +121,7 @@ class Input:
     
     @classmethod
     def string(cls, message: str, characters, min: int, max: int, space= False, mask="") -> str:
-        """_summary_
+        """Input characters specified in characters lambda parameter
 
         Args:
             message (str): _description_
@@ -178,12 +178,42 @@ class Input:
     
     @classmethod
     def numeric(cls, message: str, min: int, max: int) -> str:
+        """Input characters: 0-9 and returns it like a string
+
+        Args:
+            message (str): _description_ String to print before to input data
+            min (int): _description_ Minimum characters for a valid input
+            max (int): _description_ Maximum characters for a valid input
+
+        Returns:
+            str: _description_ Input like a string
+        """
         return cls.string(message, lambda char: char.isnumeric(), min, max)
     
     @classmethod
     def alphabetic(cls, message: str, min: int, max: int, space=True) -> str:
+        """Input characters: a-zA-Z and returns it like a string
+
+        Args:
+            message (str): _description_ String to print before to input data
+            min (int): _description_ Minimum characters for a valid input
+            max (int): _description_ Maximum characters for a valid input
+
+        Returns:
+            str: _description_ Input like a string
+        """
         return cls.string(message, lambda char: char.isalpha(), min, max, space)
     
     @classmethod
     def alphanumeric(cls, message: str, min: int, max: int, space=True) -> str:
+        """Input characters: 0-9a-zA-Z and returns it like a string
+
+        Args:
+            message (str): _description_ String to print before to input data
+            min (int): _description_ Minimum characters for a valid input
+            max (int): _description_ Maximum characters for a valid input
+
+        Returns:
+            str: _description_ Input like a string
+        """
         return cls.string(message, lambda char: char.isalnum(), min, max, space)
