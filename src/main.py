@@ -26,15 +26,16 @@ def main() -> None:
     while True:
         console.system("cls")
         print(
-            "[ KRAMER ]\n",
+            "[MODO DE ACCESO]\n",
             "1.- Administrador\n",
             "2.- Desarrollador\n",
             "3.- Ayuda\n"
             "4.- Salir\n",
+            "Aplicación creada por: KRAMER\n",
             sep=''
         )
 
-        option = Input.numeric("Modo: ", 1, 1)
+        option = Input.numeric("Opcion: ", 1, 1)
 
         match option:
 

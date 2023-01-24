@@ -324,24 +324,25 @@ class ShopMenu:
         # Help information
         print(
             """
-            [Registrar pelicula]: Agrega una nueva pelicula a la tienda. Si la pelicula ya existe la función no continuará, en ese caso use la funcion de agregar pelicula.
+                                                    [ AYUDA ]
+[Registrar pelicula]: Agrega una nueva pelicula a la tienda. Si la pelicula ya existe la función no continuará, en ese caso use la funcion de agregar pelicula.
 
-            [Agregar pelicula]: Agrega stock de una pelicula existente en la tienda.
+[Agregar pelicula]: Agrega stock de una pelicula existente en la tienda.
 
-            [Lista de peliculas]: Despliega el listado de peliculas existente y registradas en la tienda. Puede utilizar distintos filtros para busquedas mas concretas.
-            Filtros:
-            - Ninguno: Desplegará el listado completo
-            - Titulo: Despliega todas las películas que comienzen por el titulo especificado
-            - Director: Despliega todas las peliculas que su nombre de director comienzen por el especificado
-            - Categoria: Despliega todas las peliculas coincidentes con la categoria seleccionada
+[Lista de peliculas]: Despliega el listado de peliculas existente y registradas en la tienda. Puede utilizar distintos filtros para busquedas mas concretas.
+Filtros:
+- Ninguno: Desplegará el listado completo
+- Titulo: Despliega todas las películas que comienzen por el titulo especificado
+- Director: Despliega todas las peliculas que su nombre de director comienzen por el especificado
+- Categoria: Despliega todas las peliculas coincidentes con la categoria seleccionada
 
-            [Buscar pelicula]: Busca una pelicula en especifico por el Id. El Id lo puede encontrar al desplegar el listado de peliculas en la opcion [Lista de peliculas].
+[Buscar pelicula]: Busca una pelicula en especifico por el Id. El Id lo puede encontrar al desplegar el listado de peliculas en la opcion [Lista de peliculas].
 
-            [Vender pelicula]: Opera la transaccion de la venta de una pelicula. Se requiere cedula y la tarjeta de credito del comprador para validar la compra.
+[Vender pelicula]: Opera la transaccion de la venta de una pelicula. Se requiere cedula y la tarjeta de credito del comprador para validar la compra.
 
-            [Rentar pelicula]: Registra la alquilacion de una pelicula. El cliente que la alquila requiere de cedula y tarjeta de credito para poder alquilarla. Su nombre, apellido y cedula quedaran registrados en el sistema para validar nuevas alquilaciones o devoluciones a la tienda.
+[Rentar pelicula]: Registra la alquilacion de una pelicula. El cliente que la alquila requiere de cedula y tarjeta de credito para poder alquilarla. Su nombre, apellido y cedula quedaran registrados en el sistema para validar nuevas alquilaciones o devoluciones a la tienda.
 
-            [Devolver pelicula]: Registra la devolucion de una pelicula rentada. El cliente que la devuelva requiere el mismo numero de cedula con el que fue registrado su alquilacion.
+[Devolver pelicula]: Registra la devolucion de una pelicula rentada. El cliente que la devuelva requiere el mismo numero de cedula con el que fue registrado su alquilacion.
             """
         )
 
